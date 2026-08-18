@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 
 export default function FeaturedWork() {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const headlineRef = useRef<HTMLHeadingElement>(null);
+  const headlineRef = useRef<HTMLDivElement>(null);
   const paraRef = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
@@ -101,58 +101,69 @@ export default function FeaturedWork() {
       className="bg-[#faf8f3] pt-0 pb-20 mt-0 block relative z-30"
     >
       <div className="mx-auto max-w-[1400px] px-6 pt-0">
-        {/* Heading Container with Left Star & Right Rotating Badge */}
-        <div className="relative mx-auto max-w-4xl flex items-center justify-center">
-          {/* Left Star / Asterisk Icon */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.7, rotate: -20 }}
-            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="hidden sm:block absolute left-0 lg:-left-6 top-1/2 -translate-y-1/2 w-10 h-10 md:w-14 md:h-14 pointer-events-none"
-            aria-hidden="true"
-          >
-            <div className="w-full h-full relative">
-              <Image
-                src="/icons/idotive-icon-3.svg"
-                alt="Black Asterisk"
-                fill
-                className="object-contain"
-              />
-            </div>
-          </motion.div>
+        {/* Heading Container: 2 Centered Lines with Left Icon at 'F' and Right Icon at 'k' */}
+        <div ref={headlineRef} className="relative mx-auto max-w-5xl flex flex-col items-center justify-center gap-1 sm:gap-2">
+          {/* LINE 1: [Icon with 'F'] Featured */}
+          <div className="inline-flex items-center justify-center flex-nowrap">
+            {/* Left Star / Asterisk Icon: placed immediately next to 'F' with 2-4px gap */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.7, rotate: -20 }}
+              whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+              className="w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 flex-shrink-0 pointer-events-none mr-2 sm:mr-3 relative inline-block align-middle"
+              aria-hidden="true"
+            >
+              <div className="w-full h-full relative">
+                <Image
+                  src="/icons/idotive-icon-3.svg"
+                  alt="Black Asterisk"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+            </motion.div>
 
-          {/* Animated Heading */}
-          <h2 
-            ref={headlineRef}
-            className="text-center font-display text-4xl sm:text-6xl md:text-7xl lg:text-[6.5rem] xl:text-[7.5rem] font-extrabold leading-[0.92] text-black overflow-hidden m-0 p-0 block tracking-tight px-8 sm:px-14 md:px-20"
-          >
-            <span className="block overflow-hidden pt-1">
-              {renderLine("Featured")}
-            </span>
-            <span className="block overflow-hidden -mt-1 sm:-mt-2">
-              {renderLine("work")}
-            </span>
-          </h2>
+            {/* Featured text */}
+            <h2 
+              className="text-center font-display text-5xl sm:text-7xl md:text-8xl lg:text-[7rem] xl:text-[8rem] font-extrabold leading-none text-black overflow-hidden m-0 p-0 block tracking-tight whitespace-nowrap"
+            >
+              <span className="inline-block overflow-hidden">
+                {renderLine("Featured")}
+              </span>
+            </h2>
+          </div>
 
-          {/* Right Rotating Orange Badge (CREATIVE LEAD) */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.7, rotate: 30 }}
-            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-            className="hidden sm:block absolute right-0 lg:-right-6 top-1/2 -translate-y-1/2 w-16 h-16 md:w-20 md:h-20 pointer-events-none"
-            aria-hidden="true"
-          >
-            <div className="relative w-full h-full animate-spin-continuous">
-              <Image
-                src="/icons/idotive-home-one-craft.webp"
-                alt="Creative Lead Badge"
-                fill
-                className="object-contain"
-              />
-            </div>
-          </motion.div>
+          {/* LINE 2: work [Icon with 'k'] */}
+          <div className="inline-flex items-center justify-center flex-nowrap">
+            {/* work text */}
+            <h2 
+              className="text-center font-display text-5xl sm:text-7xl md:text-8xl lg:text-[7rem] xl:text-[8rem] font-extrabold leading-none text-black overflow-hidden m-0 p-0 block tracking-tight whitespace-nowrap"
+            >
+              <span className="inline-block overflow-hidden">
+                {renderLine("work")}
+              </span>
+            </h2>
+
+            {/* Right Rotating Orange Badge: placed immediately next to 'k' of 'work' */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.7, rotate: 30 }}
+              whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+              className="w-10 h-10 sm:w-14 sm:h-14 md:w-18 md:h-18 lg:w-22 lg:h-22 flex-shrink-0 pointer-events-none ml-2 sm:ml-3 relative inline-block align-middle"
+              aria-hidden="true"
+            >
+              <div className="relative w-full h-full animate-spin-continuous">
+                <Image
+                  src="/icons/idotive-icon-2-1.svg"
+                  alt="Creative Lead Badge"
+                  fill
+                  className="object-contain"
+                />
+              </div>
+            </motion.div>
+          </div>
         </div>
         
         {/* Divider line below both Featured and work text */}

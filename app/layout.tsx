@@ -64,7 +64,7 @@ export default function RootLayout({
         <link rel="preload" href="/videos/card2.mp4" as="video" type="video/mp4" fetchPriority="high" />
         <link rel="preload" href="/videos/card3.mp4" as="video" type="video/mp4" fetchPriority="high" />
         <link rel="preload" href="/videos/card4.mp4" as="video" type="video/mp4" fetchPriority="high" />
-        <link rel="preload" href="/videos/card5.webm" as="video" type="video/webm" fetchPriority="high" />
+        <link rel="preload" href="/videos/card5.mp4" as="video" type="video/mp4" fetchPriority="high" />
         <link rel="preload" href="/images/card6.webp" as="image" type="image/webp" fetchPriority="high" />
         <link rel="preload" href="/images/card7.webp" as="image" type="image/webp" fetchPriority="high" />
       </head>
