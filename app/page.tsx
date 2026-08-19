@@ -42,11 +42,10 @@ export default function Home() {
             <FeaturedWork />
             <Services />
             <Projects />
-            <main className="bg-black min-h-screen">
+            <div className="bg-black">
               <Stats />
-              <div className="h-[40vh] flex items-center justify-center bg-black"></div>
               <DarkSection />
-            </main>
+            </div>
             <Process />
             <Testimonials />
           </>
