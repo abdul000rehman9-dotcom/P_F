@@ -105,18 +105,18 @@ export default function FeaturedWork() {
         <div ref={headlineRef} className="relative mx-auto max-w-5xl flex flex-col items-center justify-center gap-1 sm:gap-2">
           {/* LINE 1: [Icon with 'F'] Featured */}
           <div className="inline-flex items-center justify-center flex-nowrap">
-            {/* Left Star / Asterisk Icon: placed immediately next to 'F' with 2-4px gap */}
+            {/* Left Star / Asterisk Icon: placed immediately next to 'F' with increased size */}
             <motion.div
               initial={{ opacity: 0, scale: 0.7, rotate: -20 }}
               whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="w-8 h-8 sm:w-12 sm:h-12 md:w-16 md:h-16 lg:w-20 lg:h-20 flex-shrink-0 pointer-events-none mr-2 sm:mr-3 relative inline-block align-middle"
+              className="w-12 h-12 sm:w-16 sm:h-16 md:w-24 md:h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32 flex-shrink-0 pointer-events-none mr-2 sm:mr-3 relative inline-block align-middle"
               aria-hidden="true"
             >
               <div className="w-full h-full relative">
                 <Image
-                  src="/icons/idotive-icon-3.svg"
+                  src="/icons/idotive-icon-3-1.svg"
                   alt="Black Asterisk"
                   fill
                   className="object-contain"
@@ -145,13 +145,13 @@ export default function FeaturedWork() {
               </span>
             </h2>
 
-            {/* Right Rotating Orange Badge: placed immediately next to 'k' of 'work' */}
+            {/* Right Rotating Orange Badge: placed immediately next to 'k' of 'work' with increased size */}
             <motion.div
               initial={{ opacity: 0, scale: 0.7, rotate: 30 }}
               whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
-              className="w-10 h-10 sm:w-14 sm:h-14 md:w-18 md:h-18 lg:w-22 lg:h-22 flex-shrink-0 pointer-events-none ml-2 sm:ml-3 relative inline-block align-middle"
+              className="w-14 h-14 sm:w-20 sm:h-20 md:w-28 md:h-28 lg:w-32 lg:h-32 xl:w-36 xl:h-36 flex-shrink-0 pointer-events-none ml-2 sm:ml-3 relative inline-block align-middle"
               aria-hidden="true"
             >
               <div className="relative w-full h-full animate-spin-continuous">

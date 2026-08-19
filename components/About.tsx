@@ -131,13 +131,13 @@ export default function About() {
       id="about"
       className="relative overflow-hidden bg-[#faf8f3] px-6 pt-20 pb-16 sm:px-12 lg:px-20 lg:pt-28 lg:pb-24 z-10"
     >
-      {/* 3D Rotating Right Side Graphic */}
+      {/* 3D Rotating Right Side Graphic - moved down slightly */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8, y: 30 }}
         whileInView={{ opacity: 1, scale: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="hidden lg:block absolute right-[2%] xl:right-[4%] top-[20%] lg:top-[24%] xl:top-[26%] z-0 pointer-events-none w-[260px] h-[260px] lg:w-[300px] lg:h-[300px] xl:w-[340px] xl:h-[340px] animate-spin-continuous"
+        className="hidden lg:block absolute right-[2%] xl:right-[4%] top-[28%] lg:top-[34%] xl:top-[38%] z-0 pointer-events-none w-[260px] h-[260px] lg:w-[300px] lg:h-[300px] xl:w-[340px] xl:h-[340px] animate-spin-continuous"
         aria-hidden="true"
       >
         <Image

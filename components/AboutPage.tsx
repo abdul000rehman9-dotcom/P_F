@@ -289,8 +289,8 @@ export default function AboutPage() {
                 </div>
               </div>
 
-              {/* Central Abstract Graphics (Rotating shape using about-card1.webp) */}
-              <div className="absolute right-[-20px] bottom-[-20px] w-52 h-52 opacity-80 pointer-events-none">
+              {/* Central Abstract Graphics (Rotating shape using about-card1.webp moved down slightly) */}
+              <div className="absolute right-[-20px] bottom-[-35px] w-52 h-52 opacity-80 pointer-events-none">
                 <motion.div
                   animate={{ rotate: 360 }}
                   transition={{ duration: 15, repeat: Infinity, ease: "linear" }}

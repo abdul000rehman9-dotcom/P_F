@@ -55,25 +55,25 @@ function LazyVideo({ src, className }: { src: string; className?: string }) {
 
 // Cards cycling along the wide 180-degree arch with uploaded videos and specified project card images
 const CARDS_DATA: CardItem[] = [
-  { id: 1, title: "Interactive design", img: "/videos/card11.mp4", type: "video" },
+  { id: 1, title: "Interactive design", img: "/images/card1.webp", type: "image" },
   { id: 2, title: "Digital experiences", img: "/images/card6.webp", type: "image" },
-  { id: 3, title: "Creative vision", img: "/videos/card5.mp4", type: "video" },
+  { id: 3, title: "Creative vision", img: "/videos/card5-1.mp4", type: "video" },
   { id: 4, title: "Experience-led design", img: "/images/card8.webp", type: "image" },
-  { id: 5, title: "Motion Graphics", img: "/videos/card12.mp4", type: "video" },
+  { id: 5, title: "Motion Graphics", img: "/videos/card12-1.mp4", type: "video" },
   { id: 6, title: "Campaign concepts", img: "/images/card7.webp", type: "image" },
-  { id: 7, title: "Art Direction", img: "/videos/card13.mp4", type: "video" },
+  { id: 7, title: "Art Direction", img: "/videos/card13-1.mp4", type: "video" },
   { id: 8, title: "Brand Identity", img: "/images/card10.webp", type: "image" },
-  { id: 9, title: "Dynamic Media", img: "/videos/card2.mp4", type: "video" },
+  { id: 9, title: "Dynamic Media", img: "/videos/card11-1.mp4", type: "video" },
   { id: 10, title: "Web Development", img: "/images/card11.webp", type: "image" },
-  { id: 11, title: "Visual Storytelling", img: "/videos/card3.mp4", type: "video" },
-  { id: 12, title: "Product Design", img: "/images/card12.webp", type: "image" },
-  { id: 13, title: "Digital Craft", img: "/videos/card4.mp4", type: "video" },
-  { id: 14, title: "Creative direction", img: "/images/card1.webp", type: "image" },
-  { id: 15, title: "Brand Systems", img: "/videos/card9.mp4", type: "video" },
-  { id: 16, title: "UI/UX Strategy", img: "/images/card14.webp", type: "image" },
-  { id: 17, title: "Editorial Layouts", img: "/videos/card15.mp4", type: "video" },
-  { id: 18, title: "Creative Studio", img: "/videos/card.mp4", type: "video" },
-  { id: 19, title: "Studio Showcase", img: "/videos/card-1.mp4", type: "video" },
+  { id: 11, title: "Visual Storytelling", img: "/videos/card11-1.mp4", type: "video" },
+  { id: 12, title: "Product Design", img: "/videos/card12-1.mp4", type: "video" },
+  { id: 13, title: "Digital Craft", img: "/videos/card13-1.mp4", type: "video" },
+  { id: 14, title: "Creative direction", img: "/images/card14.webp", type: "image" },
+  { id: 15, title: "Brand Systems", img: "/images/portoflio20one-p-1080.webp", type: "image" },
+  { id: 16, title: "UI/UX Strategy", img: "/images/img_6.webp", type: "image" },
+  { id: 17, title: "Editorial Layouts", img: "/images/idotive-portfolio-image-five-p-1080.webp", type: "image" },
+  { id: 18, title: "Creative Studio", img: "/images/img_7.webp", type: "image" },
+  { id: 19, title: "Studio Showcase", img: "/images/img_8.webp", type: "image" },
 ];
 
 const AVATARS = [
@@ -173,13 +173,13 @@ export default function Hero() {
   }, []);
 
   const getCardWidth = useCallback(() => {
-    if (typeof window === "undefined") return 290;
+    if (typeof window === "undefined") return 300;
     const w = window.innerWidth;
-    if (w >= 1920) return 340;
-    if (w >= 1440) return 315;
-    if (w >= 1200) return 290;
-    if (w >= 1024) return 260;
-    return 230;
+    if (w >= 1920) return 350;
+    if (w >= 1440) return 325;
+    if (w >= 1200) return 300;
+    if (w >= 1024) return 270;
+    return 240;
   }, []);
 
   useEffect(() => {
@@ -253,8 +253,8 @@ export default function Hero() {
       const radius = getRadius();
       const cardW = getCardWidth();
       
-      // Dynamic angle step: maintains an exact, clean visible 4-6px gap between card corners
-      const gapPx = 52;
+      // Dynamic angle step: maintains a clear, comfortable gap between cards so they never touch
+      const gapPx = 90;
       const angleStep = 2 * Math.asin(Math.min(1, (cardW + gapPx) / (2 * radius))) * (180 / Math.PI);
       const totalCycleAngle = angleStep * CARDS_DATA.length;
 
@@ -426,11 +426,11 @@ export default function Hero() {
       {/* ========================================================================= */}
       <div
         ref={arcContainerRef}
-        className="hidden md:flex relative w-full overflow-visible mt-12 sm:mt-16 lg:mt-20 h-[300px] lg:h-[350px] xl:h-[390px] justify-center items-start z-10 pointer-events-none"
+        className="hidden md:flex relative w-full overflow-visible mt-18 sm:mt-24 lg:mt-28 h-[350px] lg:h-[410px] xl:h-[460px] justify-center items-start z-10 pointer-events-none"
         aria-hidden="true"
       >
-        {/* Arch apex reference point: sits with comfortable, distinct breathing room below the launch button */}
-        <div className="relative w-0 h-0 overflow-visible top-16 sm:top-20 lg:top-24">
+        {/* Arch apex reference point: moved down slightly below the launch button */}
+        <div className="relative w-0 h-0 overflow-visible top-28 sm:top-32 lg:top-36 xl:top-40">
           {CARDS_DATA.map((card, index) => (
             <div
               key={`${card.id}-${index}`}
@@ -439,8 +439,8 @@ export default function Hero() {
               }}
               className="absolute left-0 top-0 w-0 h-0 flex items-center justify-center will-change-transform pointer-events-auto"
             >
-              <div className="group w-[230px] md:w-[260px] lg:w-[290px] xl:w-[315px] 2xl:w-[340px] shrink-0 rounded-[4px] bg-white p-2 sm:p-2.5 pb-2.5 sm:pb-3 shadow-[0_8px_30px_rgba(0,0,0,0.07)] border border-black/10 transition-transform duration-300 ease-out hover:scale-105 hover:shadow-2xl hover:z-50 flex flex-col justify-between">
-                <div className="aspect-[4/3] w-full overflow-hidden rounded-[2px] bg-neutral-100 relative">
+              <div className="group w-[240px] md:w-[270px] lg:w-[300px] xl:w-[325px] 2xl:w-[350px] shrink-0 rounded-[6px] bg-white p-2.5 sm:p-3 pb-3 sm:pb-3.5 shadow-[0_8px_30px_rgba(0,0,0,0.08)] border border-black/10 transition-transform duration-300 ease-out hover:scale-105 hover:shadow-2xl hover:z-50 flex flex-col justify-between">
+                <div className="aspect-[4/3.2] w-full overflow-hidden rounded-[4px] bg-neutral-100 relative min-h-[170px] sm:min-h-[195px] md:min-h-[215px] lg:min-h-[235px]">
                   {card.type === "video" ? (
                     <LazyVideo
                       src={card.img}
@@ -451,14 +451,14 @@ export default function Hero() {
                       src={card.img}
                       alt={card.title}
                       fill
-                      sizes="(max-width: 1024px) 260px, 340px"
+                      sizes="(max-width: 1024px) 270px, 350px"
                       className="object-cover pointer-events-none"
                       priority={index < 6}
                       referrerPolicy="no-referrer"
                     />
                   )}
                 </div>
-                <p className="mt-2 sm:mt-2.5 text-center font-sans text-[12px] sm:text-[13px] lg:text-[14px] font-bold tracking-tight text-black truncate h-5 flex items-center justify-center px-1">
+                <p className="mt-2.5 sm:mt-3 text-center font-sans text-[13px] sm:text-[14px] lg:text-[15px] font-bold tracking-tight text-black truncate h-5 flex items-center justify-center px-1">
                   {card.title}
                 </p>
               </div>
@@ -475,9 +475,9 @@ export default function Hero() {
           {CARDS_DATA.slice(0, 4).map((card) => (
             <div
               key={card.id}
-              className="group w-full rounded-[4px] bg-white p-2 shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-black/10 flex flex-col justify-between"
+              className="group w-full rounded-[6px] bg-white p-2.5 shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-black/10 flex flex-col justify-between"
             >
-              <div className="aspect-[4/3] w-full overflow-hidden rounded-[2px] bg-neutral-100 relative">
+              <div className="aspect-[4/3.2] w-full overflow-hidden rounded-[4px] bg-neutral-100 relative min-h-[145px]">
                 {card.type === "video" ? (
                   <LazyVideo
                     src={card.img}
@@ -488,13 +488,13 @@ export default function Hero() {
                     src={card.img}
                     alt={card.title}
                     fill
-                    sizes="160px"
+                    sizes="180px"
                     className="object-cover pointer-events-none"
                     referrerPolicy="no-referrer"
                   />
                 )}
               </div>
-              <p className="mt-1.5 text-center font-sans text-[11px] font-bold tracking-tight text-black truncate h-4 flex items-center justify-center px-1">
+              <p className="mt-2 text-center font-sans text-[12px] font-bold tracking-tight text-black truncate h-4 flex items-center justify-center px-1">
                 {card.title}
               </p>
             </div>
@@ -505,13 +505,13 @@ export default function Hero() {
       {/* ========================================================================= */}
       {/* 3. ORANGE ASTERISK ICON & PARAGRAPH (FROM PUBLIC ICONS)                    */}
       {/* ========================================================================= */}
-      <div className="relative z-20 mx-auto max-w-[1400px] px-6 text-center mt-6 sm:mt-8 pointer-events-auto">
-        {/* Rotating Orange Asterisk Starburst Icon matching reference screenshot */}
+      <div className="relative z-20 mx-auto max-w-[1400px] px-6 text-center -mt-2 sm:-mt-3 md:-mt-4 lg:-mt-5 pointer-events-auto">
+        {/* Rotating Orange Asterisk Starburst Icon with refined smaller size */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8, y: 15 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.75, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-          className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 mx-auto pointer-events-none"
+          className="relative w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-22 lg:h-22 mx-auto pointer-events-none"
           aria-hidden="true"
         >
           <div className="w-full h-full relative animate-spin-continuous">
@@ -540,13 +540,13 @@ export default function Hero() {
       {/* 4. ABOUT US SECTION (UNIFIED BOTTOM COMPOSITION)                          */}
       {/* ========================================================================= */}
       <div className="relative z-20 mx-auto max-w-[1400px] px-6 sm:px-12 lg:px-16 pt-12 sm:pt-16 lg:pt-20 pointer-events-auto">
-        {/* 3D Rotating Right Side Graphic - positioned with reduced gap to cards */}
+        {/* 3D Rotating Right Side Graphic - moved down slightly */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8, y: 30 }}
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="hidden lg:block absolute right-[3%] xl:right-[5%] top-[2%] z-0 pointer-events-none w-[220px] h-[220px] lg:w-[260px] lg:h-[260px] xl:w-[290px] xl:h-[290px] animate-spin-continuous"
+          className="hidden lg:block absolute right-[3%] xl:right-[5%] top-[12%] lg:top-[16%] xl:top-[20%] z-0 pointer-events-none w-[220px] h-[220px] lg:w-[260px] lg:h-[260px] xl:w-[290px] xl:h-[290px] animate-spin-continuous"
           aria-hidden="true"
         >
           <Image
