@@ -53,27 +53,24 @@ function LazyVideo({ src, className }: { src: string; className?: string }) {
   );
 }
 
-// Cards cycling along the wide 180-degree arch with uploaded videos and specified project card images
+// Cards strictly mapped to matching assets in /public/videos/ and /public/images/
+// All 4 video cards (card5, card11, card12, card13) use their exact MP4 video files
+const BASE_CARDS: Omit<CardItem, "id">[] = [
+  { title: "Interactive Design", img: "/images/card1.webp", type: "image" },
+  { title: "Creative Vision", img: "/videos/card5-1.mp4", type: "video" },
+  { title: "Digital Experiences", img: "/images/card6.webp", type: "image" },
+  { title: "Campaign Concepts", img: "/images/card7.webp", type: "image" },
+  { title: "Experience-led Design", img: "/images/card8.webp", type: "image" },
+  { title: "Brand Identity", img: "/images/card10.webp", type: "image" },
+  { title: "Dynamic Media", img: "/videos/card11-1.mp4", type: "video" },
+  { title: "Product Design", img: "/videos/card12-1.mp4", type: "video" },
+  { title: "Digital Craft", img: "/videos/card13-1.mp4", type: "video" },
+  { title: "Creative Direction", img: "/images/card14.webp", type: "image" },
+];
+
 const CARDS_DATA: CardItem[] = [
-  { id: 1, title: "Interactive design", img: "/images/card1.webp", type: "image" },
-  { id: 2, title: "Digital experiences", img: "/images/card6.webp", type: "image" },
-  { id: 3, title: "Creative vision", img: "/videos/card5-1.mp4", type: "video" },
-  { id: 4, title: "Experience-led design", img: "/images/card8.webp", type: "image" },
-  { id: 5, title: "Motion Graphics", img: "/videos/card12-1.mp4", type: "video" },
-  { id: 6, title: "Campaign concepts", img: "/images/card7.webp", type: "image" },
-  { id: 7, title: "Art Direction", img: "/videos/card13-1.mp4", type: "video" },
-  { id: 8, title: "Brand Identity", img: "/images/card10.webp", type: "image" },
-  { id: 9, title: "Dynamic Media", img: "/videos/card11-1.mp4", type: "video" },
-  { id: 10, title: "Web Development", img: "/images/card11.webp", type: "image" },
-  { id: 11, title: "Visual Storytelling", img: "/videos/card11-1.mp4", type: "video" },
-  { id: 12, title: "Product Design", img: "/videos/card12-1.mp4", type: "video" },
-  { id: 13, title: "Digital Craft", img: "/videos/card13-1.mp4", type: "video" },
-  { id: 14, title: "Creative direction", img: "/images/card14.webp", type: "image" },
-  { id: 15, title: "Brand Systems", img: "/images/portoflio20one-p-1080.webp", type: "image" },
-  { id: 16, title: "UI/UX Strategy", img: "/images/img_6.webp", type: "image" },
-  { id: 17, title: "Editorial Layouts", img: "/images/idotive-portfolio-image-five-p-1080.webp", type: "image" },
-  { id: 18, title: "Creative Studio", img: "/images/img_7.webp", type: "image" },
-  { id: 19, title: "Studio Showcase", img: "/images/img_8.webp", type: "image" },
+  ...BASE_CARDS.map((card, idx) => ({ ...card, id: idx + 1 })),
+  ...BASE_CARDS.map((card, idx) => ({ ...card, id: idx + 1 + BASE_CARDS.length })),
 ];
 
 const AVATARS = [
