@@ -35,10 +35,9 @@ const CARDS: CardData[] = [
 ];
 
 const CARD_EASE = [
-  (t: number) => 1 - Math.pow(1 - t, 4),
   (t: number) => 1 - Math.pow(1 - t, 3),
-  (t: number) => t * t * (3 - 2 * t),
-  (t: number) => t * t * t,
+  (t: number) => 1 - Math.pow(1 - t, 3),
+  (t: number) => 1 - Math.pow(1 - t, 3),
 ];
 
 function frameMap(index: number, total: number) {
@@ -47,41 +46,40 @@ function frameMap(index: number, total: number) {
 
   if (isFirst) {
     return {
-      input:   [0,     0.05,   0.20,   0.35,  1],
-      y:       ["9vh", "9vh",  "-30vh","-64vh","-64vh"],
-      z:       [0,     0,      -500,   -1180, -1180],
-      scale:   [0.95,  0.95,   0.82,   0.72,  0.72],
-      rotateX: [0,     0,      -20,    -31,   -31],
-      opacity: [1,     1,      0.6,    0,     0],
-      blur:    [0,     0,      6,      12,    12],
+      input:   [0,      0.22,    0.45,     1],
+      y:       ["0%",   "0%",    "-85%",   "-85%"],
+      z:       [0,      0,       -350,     -350],
+      scale:   [1,      1,       0.75,     0.75],
+      rotateX: [0,      0,       -20,      -20],
+      opacity: [1,      1,       0,        0],
+      blur:    [0,      0,       8,        8],
     };
   }
 
-  const start = index * 0.30;
-  const settled = start + 0.15;
-  const exit = start + 0.30;
-  const gone = start + 0.45;
+  const start = index * 0.28;
+  const settled = start + 0.20;
+  const exit = settled + 0.25;
 
   if (isLast) {
     return {
-      input:   [0,       start,   settled, 1],
-      y:       ["121vh", "121vh", "9vh",   "9vh"],
-      z:       [560,     560,     0,       0],
-      scale:   [1.38,    1.38,    0.95,    0.95],
-      rotateX: [64,      64,      0,       0],
-      opacity: [0,       0,       1,       1],
-      blur:    [0,       0,       0,       0],
+      input:   [0,        start,    settled, 1],
+      y:       ["160%",   "160%",   "0%",    "0%"],
+      z:       [-150,     -150,     0,       0],
+      scale:   [0.85,     0.85,     1,       1],
+      rotateX: [-70,      -70,      0,       0],
+      opacity: [0,        0,        1,       1],
+      blur:    [8,        8,        0,       0],
     };
   }
 
   return {
-    input:   [0,       start,   settled, exit,   gone,    1],
-    y:       ["121vh", "121vh", "9vh",   "-20vh","-50vh", "-50vh"],
-    z:       [560,     560,     0,      -400,   -1080,   -1080],
-    scale:   [1.38,    1.38,    0.95,    0.85,   0.73,    0.73],
-    rotateX: [64,      64,      0,      -15,    -30,     -30],
-    opacity: [0,       0,       1,       0.7,    0,       0],
-    blur:    [0,       0,       0,       3,      11,      11],
+    input:   [0,        start,    settled, exit,     1],
+    y:       ["160%",   "160%",   "0%",    "-85%",   "-85%"],
+    z:       [-150,     -150,     0,       -350,     -350],
+    scale:   [0.85,     0.85,     1,       0.75,     0.75],
+    rotateX: [-70,      -70,      0,       -20,      -20],
+    opacity: [0,        0,        1,       0,        0],
+    blur:    [8,        8,        0,       8,        8],
   };
 }
 
@@ -119,17 +117,17 @@ function Card({
         filter,
         zIndex: index + 1,
         transformStyle: "preserve-3d",
-        transformOrigin: "50% 50%",
+        transformOrigin: "50% 100%",
       }}
-      className="absolute inset-0 flex items-center justify-center will-change-transform"
+      className="absolute inset-0 flex items-center justify-center will-change-transform pointer-events-none"
     >
-      <div className="w-[92vw] sm:w-[88vw] md:w-[min(67vw,1280px)] max-w-full rounded-2xl bg-white p-4 sm:p-6 shadow-2xl border border-white/5">
+      <div className="w-[90vw] max-w-[1100px] pointer-events-auto rounded-2xl bg-white p-4 sm:p-6 shadow-2xl border border-white/5">
         <div className="aspect-[1.93/1] overflow-hidden rounded-xl relative w-full bg-neutral-900">
           <Image
             src={data.image}
             alt={data.title}
             fill
-            sizes="(max-width: 1280px) 92vw, 1280px"
+            sizes="(max-width: 1100px) 90vw, 1100px"
             className="object-cover"
             draggable={false}
           />
@@ -156,15 +154,14 @@ export function DarkSection() {
   });
 
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 80,
-    damping: 30,
+    stiffness: 65,
+    damping: 28,
     mass: 0.5,
     restDelta: 0.001,
   });
 
   return (
     <div className="w-full bg-black">
-      {/* Heading placed above the card animation that scrolls naturally with page */}
       <div className="pt-16 pb-6 sm:pt-24 sm:pb-8 md:pt-28 md:pb-12 px-6 text-center max-w-4xl mx-auto">
         <h2 className="text-2xl sm:text-4xl md:text-5xl font-display font-semibold text-white tracking-tight uppercase leading-[1.2]">
           Your vision our creativity{" "}
@@ -181,14 +178,12 @@ export function DarkSection() {
         </h2>
       </div>
 
-      {/* Reverted original 3D card animation section */}
       <section
         id="dark-cards-section"
         ref={sectionRef}
         className="relative w-full bg-black block"
-        style={{ height: "400vh" }} 
+        style={{ height: "400vh" }}
       >
-        {/* Sticky container pinning cards during scroll */}
         <div
           className="sticky top-0 h-screen w-full overflow-hidden flex items-center justify-center"
           style={{
@@ -197,7 +192,7 @@ export function DarkSection() {
           }}
         >
           <div
-            className="relative h-full w-full"
+            className="relative h-full w-full flex items-center justify-center"
             style={{ transformStyle: "preserve-3d" }}
           >
             {CARDS.map((card, i) => (
@@ -215,4 +210,3 @@ export function DarkSection() {
     </div>
   );
 }
-
