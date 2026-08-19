@@ -167,7 +167,7 @@ export function DarkSection() {
       {/* Heading placed above the card animation that scrolls naturally with page */}
       <div className="pt-16 pb-6 sm:pt-24 sm:pb-8 md:pt-28 md:pb-12 px-6 text-center max-w-4xl mx-auto">
         <h2 className="text-2xl sm:text-4xl md:text-5xl font-display font-semibold text-white tracking-tight uppercase leading-[1.2]">
-          Your vision, our creativity{" "}
+          Your vision our creativity{" "}
           <span className="inline-block align-middle mx-1 sm:mx-2 text-[#f26b2c]">
             <svg
               className="w-5 h-5 sm:w-7 sm:h-7 md:w-8 md:h-8 inline-block animate-[spin_12s_linear_infinite]"
@@ -176,8 +176,8 @@ export function DarkSection() {
             >
               <path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z" />
             </svg>
-          </span>{" "}
-          a<br className="hidden sm:inline" /> perfect partnership for success
+          </span>
+          <br className="hidden sm:inline" />a perfect partnership for success
         </h2>
       </div>
 
